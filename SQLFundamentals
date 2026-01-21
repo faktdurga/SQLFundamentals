@@ -1,0 +1,131 @@
+INTRODUCTION
+
+SQL (Structured Query Language) is used to store, retrieve, manage and manipulate data stored in relational databases.
+Popular RDBMS: MS SQL Server, MySQL, PostgreSQL, Oracle 
+
+RDBMS (Relational Database Management System)
+Tables stores data in rows and column
+There is relation beetween tables
+
+Common Data Types
+Numeric : INT, BIGINT, Float, Decimal
+String : VARCHAR, CHAR, TEXT
+DateTime : DATE, TIMESTAMP, DATETIME
+
+Types of SQL Commands
+DDL, DML, DCL
+
+DDL - Data Defination Language
+Manage and Define db structure
+1. Create - create objects
+
+  CREATE TABLE Employees (
+    EmpId INT,
+    Name VARCHAR(100),
+    Salary DECIMAL(10,2)
+);
+
+2. Alter - alter object
+
+  ALTER TABLE Employees ADD DeptId INT;
+
+3. Drop - delete table structure
+
+  DROP TABLE Employees;
+
+4. Truncate - delete records keeps structure
+
+  TRUNCATE TABLE Employees;
+
+DML - Data Manipulation Language
+Deals with data inside table
+
+1. Insert - Add data
+
+INSERT INTO Employees (EmpId, Name, Salary, DeptId)
+VALUES (1, 'Rohan', 50000, 10);
+
+2. Update - Modify data
+
+UPDATE Employees SET Salary = 55000
+WHERE EmpId = 1;
+
+3. Delete - delete data
+
+DELETE FROM Employees WHERE EmpId = 1;
+
+4. Select - fetch
+
+SELECT * FROM Employees;
+
+DCL - Data Control Language
+Controls access and permission
+
+1. GRANT - give access
+2. REVOKE - Remove Access
+
+
+SQL Constraints 
+Constraints Protect Data Integrity
+PRIMARY KEY  - Unique identifier
+FOREIGN KEY  - Enforce Relationship (ON Delete - parent row is deleted child row is also deleted) (on update if deptid chages it gets updated in employee table too)
+UNIQUE       - No duplicate records
+NOT NULL     - No null values
+CHECK        - Check condition
+DEFAULT      - Set Default Value
+
+
+example
+
+CREATE TABLE Employees (
+    EmpId INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Salary DECIMAL(10,2) CHECK (Salary > 0),
+    FOREIGN KEY (DeptId) REFERENCES Departments(DeptId) ON DELETE CASCADE ON UPDATE CASCADE
+    Status VARCHAR(20) DEFAULT 'Active'
+);
+
+
+CREATE TABLE Departments (
+    DeptId INT PRIMARY KEY,
+    DeptName VARCHAR(50)
+);
+
+
+
+Seed data 
+
+CREATE TABLE Departments (
+    DeptId INT PRIMARY KEY,
+    DeptName VARCHAR(50)
+);
+
+CREATE TABLE Employees (
+    EmpId INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Salary DECIMAL(10,2),
+    DeptId INT,
+    Status VARCHAR(20) DEFAULT 'Active',
+    FOREIGN KEY (DeptId) REFERENCES Departments(DeptId)
+);
+
+INSERT INTO Departments VALUES
+(10, 'IT'),
+(20, 'HR'),
+(30, 'Finance');
+
+INSERT INTO Employees VALUES
+(1, 'Rohan', 50000, 10, 'Active'),
+(2, 'Sneha', 60000, 10, 'Active'),
+(3, 'Amit', 45000, 20, 'Active'),
+(4, 'Neha', 40000, 30, 'Inactive'),
+(5, 'Pooja', 35000, NULL, 'Active');
+
+1. Read all employees
+2. Find employees from IT
+3. Find employees with no department
+4. Update salary
+5. Delete inactive employees
+6. Show department names with employees
+7. Total employees per department
+8. Highest salary
