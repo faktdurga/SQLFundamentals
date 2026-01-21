@@ -1,5 +1,5 @@
 INTRODUCTION
-
+---------------------------------------------------------------------------------------------------------------------------------------
 SQL (Structured Query Language) is used to store, retrieve, manage and manipulate data stored in relational databases.
 Popular RDBMS: MS SQL Server, MySQL, PostgreSQL, Oracle 
 
@@ -11,6 +11,7 @@ Common Data Types
 Numeric : INT, BIGINT, Float, Decimal
 String : VARCHAR, CHAR, TEXT
 DateTime : DATE, TIMESTAMP, DATETIME
+---------------------------------------------------------------------------------------------------------------------------------------
 
 Types of SQL Commands
 DDL, DML, DCL
@@ -40,40 +41,38 @@ Manage and Define db structure
 DML - Data Manipulation Language
 Deals with data inside table
 
-1. Insert - Add data
+    1. Insert - Add data
 
-INSERT INTO Employees (EmpId, Name, Salary, DeptId)
-VALUES (1, 'Rohan', 50000, 10);
+      INSERT INTO Employees (EmpId, Name, Salary, DeptId)
+      VALUES (1, 'Rohan', 50000, 10);
 
-2. Update - Modify data
+    2. Update - Modify data
 
-UPDATE Employees SET Salary = 55000
-WHERE EmpId = 1;
+      UPDATE Employees SET Salary = 55000
+      WHERE EmpId = 1;
 
-3. Delete - delete data
+    3. Delete - delete data
 
-DELETE FROM Employees WHERE EmpId = 1;
+      DELETE FROM Employees WHERE EmpId = 1;
 
-4. Select - fetch
+    4. Select - fetch
 
-SELECT * FROM Employees;
+      SELECT * FROM Employees;
 
 DCL - Data Control Language
 Controls access and permission
 
-1. GRANT - give access
-2. REVOKE - Remove Access
-
+  1. GRANT - give access
+  2. REVOKE - Remove Access
 
 SQL Constraints 
 Constraints Protect Data Integrity
-PRIMARY KEY  - Unique identifier
-FOREIGN KEY  - Enforce Relationship (ON Delete - parent row is deleted child row is also deleted) (on update if deptid chages it gets updated in employee table too)
-UNIQUE       - No duplicate records
-NOT NULL     - No null values
-CHECK        - Check condition
-DEFAULT      - Set Default Value
-
+  1.PRIMARY KEY  - Unique identifier
+  2.FOREIGN KEY  - Enforce Relationship (ON Delete - parent row is deleted child row is also deleted) (on update if deptid chages it gets updated in employee table too)
+  3.UNIQUE       - No duplicate records
+  4.NOT NULL     - No null values
+  5.CHECK        - Check condition
+  6.DEFAULT      - Set Default Value
 
 example
 
@@ -85,15 +84,51 @@ CREATE TABLE Employees (
     Status VARCHAR(20) DEFAULT 'Active'
 );
 
-
 CREATE TABLE Departments (
     DeptId INT PRIMARY KEY,
     DeptName VARCHAR(50)
 );
 
+Filtering and Sorting
+  1. Where clause - Filter rows (comparison operators)
+  2. In 
+  3. BETWEEN
+  4. LIKE (Pattern Matching)
+    WHERE Name like 'R%' -- starts with R
+    WHERE Name like '%a' -- end with a
+    WHERE Name like '%an%' --contains an
+  5. IS NULL
+  6. Order by 
+
+Aggregate Function
+  1. COUNT()
+  2. SUM()
+  3. AVG()
+  4. MAX()
+  5. MIN()
+
+Group By
+  Group rows based on column (why need explain hightest salary by dept)
+
+    SELECT DeptId, COUNT(*) AS TotalEmployees
+    FROM Employees
+    GROUP BY DeptId;
+
+Having
+  Filter after grouping 
+
+    SELECT DeptId, AVG(Salary) AS AvgSalary
+    FROM Employees
+    GROUP BY DeptId
+    HAVING AVG(Salary) > 50000;
 
 
-Seed data 
+JOINS
+INNER JOIN - All matching records
+LEFT JOIN - All from left table even if no matching on right 
+
+
+Seed data for practice
 
 CREATE TABLE Departments (
     DeptId INT PRIMARY KEY,
