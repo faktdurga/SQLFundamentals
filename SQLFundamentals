@@ -65,6 +65,8 @@ Controls access and permission
   1. GRANT - give access
   2. REVOKE - Remove Access
 
+---------------------------------------------------------------------------------------------------------------------------------------
+
 SQL Constraints 
 Constraints Protect Data Integrity
   1.PRIMARY KEY  - Unique identifier
@@ -89,6 +91,8 @@ CREATE TABLE Departments (
     DeptName VARCHAR(50)
 );
 
+---------------------------------------------------------------------------------------------------------------------------------------
+
 Filtering and Sorting
   1. Where clause - Filter rows (comparison operators)
   2. In 
@@ -100,12 +104,14 @@ Filtering and Sorting
   5. IS NULL
   6. Order by 
 
+---------------------------------------------------------------------------------------------------------------------------------------
 Aggregate Function
   1. COUNT()
   2. SUM()
   3. AVG()
   4. MAX()
   5. MIN()
+---------------------------------------------------------------------------------------------------------------------------------------
 
 Group By
   Group rows based on column (why need explain hightest salary by dept)
@@ -121,13 +127,13 @@ Having
     FROM Employees
     GROUP BY DeptId
     HAVING AVG(Salary) > 50000;
-
+---------------------------------------------------------------------------------------------------------------------------------------
 
 JOINS
 INNER JOIN - All matching records
 LEFT JOIN - All from left table even if no matching on right 
 
-
+---------------------------------------------------------------------------------------------------------------------------------------
 Seed data for practice
 
 CREATE TABLE Departments (
