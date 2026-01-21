@@ -8,8 +8,15 @@ Tables stores data in rows and column
 There is relation beetween tables
 
 Common Data Types
-Numeric : INT, BIGINT, Float, Decimal
-String : VARCHAR, CHAR, TEXT
+Numeric : 
+  1 INT - whole numbers
+  2 BIGINT - larger whole numbers
+  3 Float - scietif values , imprecise calculation
+  4 Decimal - exact decimal values ex money,price, salary
+String : 
+1 VARCHAR - variable lenght string 
+2 CHAR - fixed length string
+3 TEXT - large text data 
 DateTime : DATE, TIMESTAMP, DATETIME
 ---------------------------------------------------------------------------------------------------------------------------------------
 
